@@ -25,6 +25,10 @@ Restaurant.init({
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
+    email: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true,
+    },
 }, {
     sequelize: database_1.default,
     tableName: "restaurants",

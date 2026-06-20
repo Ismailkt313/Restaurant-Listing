@@ -3,6 +3,7 @@ export interface IRestaurant {
     name: string;
     address: string;
     contact_number: string;
+    email?: string;
     createdAt?: Date;
     updatedAt?: Date;
 }
@@ -11,12 +12,14 @@ export interface ICreateRestaurantDto {
     name: string;
     address: string;
     contact_number: string;
+    email?: string;
 }
 
 export interface IUpdateRestaurantDto {
     name?: string;
     address?: string;
     contact_number?: string;
+    email?: string;
 }
 
 export interface IRestaurantRepository {

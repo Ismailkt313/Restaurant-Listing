@@ -9,6 +9,7 @@ class Restaurant extends Model<IRestaurant, RestaurantCreationAttributes> implem
     declare name: string;
     declare address: string;
     declare contact_number: string;
+    declare email?: string;
     declare readonly createdAt: Date;
     declare readonly updatedAt: Date;
 }
@@ -31,6 +32,10 @@ Restaurant.init(
         contact_number: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
     },
     {

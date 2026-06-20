@@ -8,7 +8,20 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
     ...options,
   });
 
-  const json = await res.json();
+  let json: any = null;
+  if (res.status !== 204) {
+    const text = await res.text();
+    if (text) {
+      try {
+        json = JSON.parse(text);
+      } catch (err) {
+        if (!res.ok) {
+          throw new Error(text || 'An unexpected error occurred');
+        }
+        throw err;
+      }
+    }
+  }
 
   if (!res.ok) {
     const msg = json?.message || 'An unexpected error occurred';
@@ -25,13 +38,13 @@ export const restaurantApi = {
   getById: (id: string): Promise<{ status: string; data: Restaurant }> =>
     request(`/restaurants/${id}`),
 
-  create: (data: Omit<RestaurantFormData, 'email'>): Promise<{ status: string; data: Restaurant }> =>
+  create: (data: RestaurantFormData): Promise<{ status: string; data: Restaurant }> =>
     request('/restaurants', {
       method: 'POST',
       body: JSON.stringify(data),
     }),
 
-  update: (id: string, data: Partial<Omit<RestaurantFormData, 'email'>>): Promise<{ status: string; data: Restaurant }> =>
+  update: (id: string, data: Partial<RestaurantFormData>): Promise<{ status: string; data: Restaurant }> =>
     request(`/restaurants/${id}`, {
       method: 'PUT',
       body: JSON.stringify(data),

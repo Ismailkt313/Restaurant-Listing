@@ -90,6 +90,7 @@ export default function App() {
       name: data.name,
       address: data.address,
       contact_number: data.contact_number,
+      email: data.email,
     };
     try {
       if (formMode === 'edit' && editTarget) {
