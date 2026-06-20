@@ -1,28 +1,26 @@
-import { Request, Response, NextFunction } from "express";
-import { IRestaurantService } from "./restaurant.types";
-import { createRestaurantSchema, updateRestaurantSchema } from "./restaurant.validation";
-
-export class RestaurantController {
-    private restaurantService: IRestaurantService;
-
-    constructor(restaurantService: IRestaurantService) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.RestaurantController = void 0;
+const restaurant_validation_1 = require("./restaurant.validation");
+class RestaurantController {
+    restaurantService;
+    constructor(restaurantService) {
         this.restaurantService = restaurantService;
     }
-
-    createRestaurant = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    createRestaurant = async (req, res, next) => {
         try {
-            const validatedData = createRestaurantSchema.parse(req.body);
+            const validatedData = restaurant_validation_1.createRestaurantSchema.parse(req.body);
             const restaurant = await this.restaurantService.createRestaurant(validatedData);
             res.status(201).json({
                 status: "success",
                 data: restaurant,
             });
-        } catch (error) {
+        }
+        catch (error) {
             next(error);
         }
     };
-
-    getAllRestaurants = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    getAllRestaurants = async (req, res, next) => {
         try {
             const restaurants = await this.restaurantService.getAllRestaurants();
             res.status(200).json({
@@ -30,45 +28,48 @@ export class RestaurantController {
                 results: restaurants.length,
                 data: restaurants,
             });
-        } catch (error) {
+        }
+        catch (error) {
             next(error);
         }
     };
-
-    getRestaurantById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    getRestaurantById = async (req, res, next) => {
         try {
-            const id = req.params.id as string;
+            const id = req.params.id;
             const restaurant = await this.restaurantService.getRestaurantById(id);
             res.status(200).json({
                 status: "success",
                 data: restaurant,
             });
-        } catch (error) {
+        }
+        catch (error) {
             next(error);
         }
     };
-
-    updateRestaurant = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    updateRestaurant = async (req, res, next) => {
         try {
-            const id = req.params.id as string;
-            const validatedData = updateRestaurantSchema.parse(req.body);
+            const id = req.params.id;
+            const validatedData = restaurant_validation_1.updateRestaurantSchema.parse(req.body);
             const restaurant = await this.restaurantService.updateRestaurant(id, validatedData);
             res.status(200).json({
                 status: "success",
                 data: restaurant,
             });
-        } catch (error) {
+        }
+        catch (error) {
             next(error);
         }
     };
-
-    deleteRestaurant = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    deleteRestaurant = async (req, res, next) => {
         try {
-            const id = req.params.id as string;
+            const id = req.params.id;
             await this.restaurantService.deleteRestaurant(id);
             res.status(204).send();
-        } catch (error) {
+        }
+        catch (error) {
             next(error);
         }
     };
 }
+exports.RestaurantController = RestaurantController;
+//# sourceMappingURL=restaurant.controller.js.map

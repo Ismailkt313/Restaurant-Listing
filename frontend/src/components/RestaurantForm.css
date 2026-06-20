@@ -1,0 +1,201 @@
+.rform {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Grid */
+.rform__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 20px;
+  padding: 24px;
+}
+
+/* Field */
+.rfield {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rfield__label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.1px;
+}
+
+.rfield__req {
+  color: var(--danger);
+  font-size: 13px;
+}
+
+.rfield__opt {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-left: 2px;
+}
+
+/* Input wrapper */
+.rfield__wrap {
+  position: relative;
+}
+
+.rfield__icon {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: color 0.15s;
+}
+
+.rfield__wrap:focus-within .rfield__icon {
+  color: var(--primary);
+}
+
+.rfield__input {
+  width: 100%;
+  height: 40px;
+  padding: 0 13px 0 36px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font);
+  font-size: 13.5px;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  outline: none;
+  transition: var(--transition);
+}
+
+.rfield__input::placeholder {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.rfield__input:hover:not(:disabled) {
+  border-color: var(--slate-400);
+}
+
+.rfield__input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-ring);
+}
+
+.rfield__input:disabled {
+  background: var(--bg-app);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.rfield--error .rfield__input {
+  border-color: var(--danger);
+}
+
+.rfield--error .rfield__input:focus {
+  box-shadow: 0 0 0 3px var(--danger-ring);
+}
+
+/* Error text */
+.rfield__error {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--danger);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Footer */
+.rform__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--slate-50);
+}
+
+/* Buttons */
+.rform__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 38px;
+  padding: 0 18px;
+  border-radius: var(--radius-md);
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1.5px solid transparent;
+  letter-spacing: 0.1px;
+}
+
+.rform__btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rform__btn--primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.2);
+}
+
+.rform__btn--primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
+  transform: translateY(-1px);
+}
+
+.rform__btn--primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.rform__btn--ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+
+.rform__btn--ghost:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--slate-300);
+  color: var(--text-primary);
+}
+
+/* Spinner */
+.rform__spinner {
+  width: 13px;
+  height: 13px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: rform-spin 0.65s linear infinite;
+}
+
+@keyframes rform-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 560px) {
+  .rform__grid {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+  .rform__footer {
+    padding: 14px 18px;
+  }
+}

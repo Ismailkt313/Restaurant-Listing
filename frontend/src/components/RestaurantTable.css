@@ -1,0 +1,353 @@
+.rt {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+/* Toolbar */
+.rt__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.rt__toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.rt__toolbar-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+
+.rt__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  border-radius: var(--radius-full);
+  background: var(--bg-app);
+  border: 1px solid var(--border);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 0;
+}
+
+/* Add button */
+.rt__add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 1px 3px rgba(25, 118, 210, 0.22);
+  letter-spacing: 0.1px;
+}
+
+.rt__add-btn:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 3px 8px rgba(25, 118, 210, 0.28);
+  transform: translateY(-1px);
+}
+
+.rt__add-btn:active {
+  transform: translateY(0);
+}
+
+/* Scroll */
+.rt__scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Table */
+.rt__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Head */
+.rt__head-row {
+  background: var(--slate-50);
+  border-bottom: 1px solid var(--border);
+}
+
+.rt__th {
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  white-space: nowrap;
+}
+
+.rt__th--right {
+  text-align: right;
+}
+
+/* Row */
+.rt__row {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+}
+
+.rt__row:last-child {
+  border-bottom: none;
+}
+
+.rt__row:hover {
+  background: var(--bg-hover);
+}
+
+/* Cell */
+.rt__td {
+  padding: 13px 16px;
+  vertical-align: middle;
+}
+
+.rt__td--right {
+  text-align: right;
+}
+
+/* Restaurant info */
+.rt__restaurant {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.rt__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 0.3px;
+}
+
+.rt__restaurant-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.rt__name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 170px;
+  display: block;
+}
+
+.rt__id {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.2px;
+}
+
+/* Cell text */
+.rt__cell-text {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.rt__muted {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+/* Phone badge */
+.rt__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 24px;
+  padding: 0 9px;
+  border-radius: var(--radius-full);
+  background: var(--bg-app);
+  border: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* Email */
+.rt__email {
+  font-size: 13px;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.rt__email:hover {
+  text-decoration: underline;
+}
+
+/* Actions */
+.rt__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.rt__action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1.5px solid transparent;
+}
+
+.rt__action--edit {
+  color: var(--primary);
+  background: var(--blue-50);
+  border-color: var(--blue-100);
+}
+
+.rt__action--edit:hover {
+  background: var(--blue-100);
+  border-color: var(--blue-200);
+  transform: translateY(-1px);
+}
+
+.rt__action--delete {
+  color: var(--danger);
+  background: var(--red-50);
+  border-color: var(--red-100);
+}
+
+.rt__action--delete:hover {
+  background: var(--red-100);
+  border-color: var(--red-200);
+  transform: translateY(-1px);
+}
+
+/* Empty state */
+.rt__empty-td {
+  padding: 0;
+}
+
+.rt__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.rt__empty-icon {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: var(--bg-app);
+  color: var(--slate-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--border);
+}
+
+.rt__empty-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.rt__empty-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  max-width: 320px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.rt__empty-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 16px;
+  margin-top: 4px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font);
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.rt__empty-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* Skeleton */
+.rt__skeleton {
+  display: block;
+  height: 13px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--slate-100) 25%, var(--slate-200) 50%, var(--slate-100) 75%);
+  background-size: 200% 100%;
+  animation: rt-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes rt-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Footer */
+.rt__footer {
+  padding: 11px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--slate-50);
+}
+
+.rt__footer-text {
+  font-size: 12px;
+  color: var(--text-muted);
+}
