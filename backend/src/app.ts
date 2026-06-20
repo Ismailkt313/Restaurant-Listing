@@ -5,7 +5,14 @@ import { errorMiddleware } from "./shared/errors/error.middleware"
 
 const app = express()
 
-app.use(cors())
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://restaurant-listing-nine.vercel.app"
+    ]
+  })
+);
 app.use(express.json())
 
 // Mount modules
@@ -14,4 +21,4 @@ app.use("/api/restaurants", restaurantRoutes)
 // Mount global error handler
 app.use(errorMiddleware)
 
-export default app
+export default app
