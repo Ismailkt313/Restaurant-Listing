@@ -7,10 +7,23 @@ const app = express()
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://restaurant-listing-nine.vercel.app"
-    ]
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps, curl, or server-side calls)
+      if (!origin) return callback(null, true);
+
+      const allowedOrigins = [
+        "https://restaurant-listing-nine.vercel.app"
+      ];
+
+      // Allow any local origin (e.g. http://localhost:5173 or http://127.0.0.1:5174)
+      const isLocal = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
+
+      if (allowedOrigins.includes(origin) || isLocal) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    }
   })
 );
 app.use(express.json())
